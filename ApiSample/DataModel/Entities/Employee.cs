@@ -23,6 +23,8 @@ public class Employee :AuditableEntity, IDeletable, IIdentity<Guid>
     [MaxLength(RegularLength)]
     public required string Email { get; set; }
 
+    public required DateTime BirthDate { get; set; }
+    
     public string? PasswordHash { get; set; }
 
     public Guid SecurityStamp { get; set; }

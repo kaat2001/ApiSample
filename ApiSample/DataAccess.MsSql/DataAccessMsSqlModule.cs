@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Common.Interfaces;
+using DataModel;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +12,8 @@ public static class DataAccessMsSqlModule
        this IServiceCollection services,
        IConfigurationManager configuration)
     {
+        services.AddScoped<IDbContext, MsSqlDbContext>();
+
         services.AddDbContextFactory<MsSqlDbContext>(
             options => options.UseSqlServer(
                 configuration.GetConnectionString("MsSqlConnection"),

@@ -5,6 +5,7 @@ using ApiSample.Results;
 using ApiSampleControllers.Extentions;
 using Common.Dto.Employee;
 using Common.Interfaces;
+using Common.Interfaces.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +23,8 @@ public class EmployeeController: ControllerBase
 
     public EmployeeController(ILogger<EmployeeController> logger,
                                    IUserService userService,
-                                   IAuthorizationService authorizationService)
+                                   IAuthorizationService authorizationService
+                                   )
     {
         _logger = logger;
         _userService = userService;

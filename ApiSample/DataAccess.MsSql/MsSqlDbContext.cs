@@ -1,10 +1,22 @@
-﻿using DataModel.Entities;
+﻿using DataModel;
+using DataModel.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.MsSql;
 
-public class MsSqlDbContext : DbContext
+public class MsSqlDbContext : DbContext, IDbContext
 {
+    public MsSqlDbContext()
+    {
+    }
+
+    public MsSqlDbContext(DbContextOptions<MsSqlDbContext> options)
+        : base(options)
+    {
+    }
+
+    public Guid NewId() => Guid.NewGuid();
+    
     public DbSet<BankCorrespondent> BankCorrespondent { get; init; }
     public DbSet<BankInfo> BankInfos { get; init; }
     public DbSet<Customer> Customers { get; init; }
@@ -14,4 +26,6 @@ public class MsSqlDbContext : DbContext
     public DbSet<InvoicePosition> InvoicePositions { get; init; }
     public DbSet<Role> Roles { get; init; }
     public DbSet<Supplier> Suppliers { get; init; }
+
+    
 }

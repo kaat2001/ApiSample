@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 namespace DataModel.Entities;
 
 
@@ -8,10 +7,12 @@ public class BankCorrespondent
 {
     public required Guid BankInfoId { get; set; }
 
+    [DeleteBehavior(DeleteBehavior.NoAction)]
     public required BankInfo BankInfo { get; set; }
 
     public required Guid SupplierId { get; set; }
 
+    [DeleteBehavior(DeleteBehavior.NoAction)]
     public required Supplier Supplier { get; set; }
 
     public bool IsDefault { get; set; }

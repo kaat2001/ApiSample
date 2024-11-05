@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DataModel;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -6,10 +7,11 @@ namespace DataAccess.PgSql;
 
 public static class DataAccessPgSqlModule
 {
-    public static IServiceCollection AddDataAccessMsSqlModule(
+    public static IServiceCollection AddDataAccessPgSqlModule(
        this IServiceCollection services,
        IConfiguration configuration)
     {
+        services.AddScoped<IDbContext, PgSqlDbContext>();
 
         services.AddDbContextFactory<PgSqlDbContext>(
             options => options.UseNpgsql(

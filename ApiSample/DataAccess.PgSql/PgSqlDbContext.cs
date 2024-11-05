@@ -1,10 +1,26 @@
-﻿using DataModel.Entities;
+﻿using DataModel;
+using DataModel.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.PgSql;
 
-public class PgSqlDbContext : DbContext
+public class PgSqlDbContext : DbContext, IDbContext
 {
+    public const string SchemaName = "public";
+
+
+    public PgSqlDbContext(DbContextOptions<PgSqlDbContext> options)
+        : base(options)
+    {
+    }
+
+    protected override void OnModelCreating(ModelBuilder b)
+    {
+        b.HasDefaultSchema(SchemaName);
+    }
+
+    public Guid NewId() => Guid.NewGuid();
+
     public DbSet<BankCorrespondent> BankCorrespondent { get; init; }
     public DbSet<BankInfo> BankInfos { get; init; }
     public DbSet<Customer> Customers { get; init; }

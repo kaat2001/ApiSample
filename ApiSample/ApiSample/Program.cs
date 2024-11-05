@@ -7,12 +7,15 @@ using Common.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 using Serilog;
 using System.Reflection;
 using System.Text;
 using DataAccess.MsSql;
 using DataAccess.PgSql;
+using Microsoft.OpenApi.Models;
+using Common.Interfaces.Repositories;
+using ApiSample.Repositories;
+using DataModel;
 
 Version? AppVersion = Assembly.GetEntryAssembly()?.GetName().Version;
 
@@ -146,13 +149,13 @@ static void ConfigureServices(WebApplicationBuilder builder)
     {
         options.Conventions.Add(new RouteTokenTransformerConvention(new SlugifyParameterTransformer()));
     });
-    //TODO - support PgSql
-    //if (builder.Configuration.IsMsSql)
-    builder.Services.AddDataAccessMsSqlModule(builder.Configuration);
-    //else
-    //builder.Services.AddDataAccessPgSqlModule(builder.Configuration);
+    if (builder.Configuration.IsMsSql())
+        builder.Services.AddDataAccessMsSqlModule(builder.Configuration);
+    else
+        builder.Services.AddDataAccessPgSqlModule(builder.Configuration);
 
     builder.Services.AddMemoryCache();
+    builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
     builder.Services.AddScoped<IUserService, UserService>();
 }
 
