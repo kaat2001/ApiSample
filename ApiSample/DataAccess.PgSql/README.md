@@ -1,4 +1,4 @@
-﻿# DataModel Project
+﻿# DataAccess.PgSql Project
 
 Used for manage database on PostgreSql.
 Uses EntityFramework for managing migrations.
