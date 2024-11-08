@@ -22,8 +22,8 @@ namespace DataAccess.MsSql.Migrations
                     Iban = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     Deleted = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    Created = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    LastModified = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
+                    Created = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false, defaultValueSql: "getdate()"),
+                    LastModified = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true, defaultValueSql: "getdate()")
                 },
                 constraints: table =>
                 {
@@ -38,8 +38,8 @@ namespace DataAccess.MsSql.Migrations
                     Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     Deleted = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    Created = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    LastModified = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
+                    Created = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false, defaultValueSql: "getdate()"),
+                    LastModified = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true, defaultValueSql: "getdate()")
                 },
                 constraints: table =>
                 {
@@ -60,8 +60,8 @@ namespace DataAccess.MsSql.Migrations
                     SecurityStamp = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     Deleted = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    Created = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    LastModified = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
+                    Created = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false, defaultValueSql: "getdate()"),
+                    LastModified = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true, defaultValueSql: "getdate()")
                 },
                 constraints: table =>
                 {
@@ -93,8 +93,8 @@ namespace DataAccess.MsSql.Migrations
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     Deleted = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     BeneficiaryBankId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Created = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    LastModified = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
+                    Created = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false, defaultValueSql: "getdate()"),
+                    LastModified = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true, defaultValueSql: "getdate()")
                 },
                 constraints: table =>
                 {
@@ -169,8 +169,8 @@ namespace DataAccess.MsSql.Migrations
                     SupplierId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     Deleted = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    Created = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    LastModified = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
+                    Created = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false, defaultValueSql: "getdate()"),
+                    LastModified = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true, defaultValueSql: "getdate()")
                 },
                 constraints: table =>
                 {
@@ -202,8 +202,8 @@ namespace DataAccess.MsSql.Migrations
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     Deleted = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     InvoiceId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    Created = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    LastModified = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
+                    Created = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false, defaultValueSql: "getdate()"),
+                    LastModified = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true, defaultValueSql: "getdate()")
                 },
                 constraints: table =>
                 {

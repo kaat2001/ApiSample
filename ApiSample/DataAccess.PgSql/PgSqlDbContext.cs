@@ -1,10 +1,12 @@
-﻿using DataModel;
+﻿using DataModel.Common;
+using DataModel.DbContexts;
 using DataModel.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace DataAccess.PgSql;
 
-public class PgSqlDbContext : DbContext, IDbContext
+public partial class PgSqlDbContext : AuditableDbContext, IDbContext
 {
     public const string SchemaName = "public";
 
@@ -14,20 +16,28 @@ public class PgSqlDbContext : DbContext, IDbContext
     {
     }
 
-    protected override void OnModelCreating(ModelBuilder b)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        b.HasDefaultSchema(SchemaName);
+        foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+        {
+            ConfigureAudit(modelBuilder, entityType);
+        }
+        modelBuilder.HasDefaultSchema(SchemaName);
+
+        base.OnModelCreating(modelBuilder);
     }
 
-    public Guid NewId() => Guid.NewGuid();
+    private static void ConfigureAudit(ModelBuilder modelBuilder, IMutableEntityType entityType)
+    {
+        var created = entityType.FindDeclaredProperty(nameof(AuditableEntity.Created));
+        var lastModified = entityType.FindDeclaredProperty(nameof(AuditableEntity.LastModified));
+        if (created == null || lastModified == null)
+        {
+            return;
+        }
 
-    public DbSet<BankCorrespondent> BankCorrespondent { get; init; }
-    public DbSet<BankInfo> BankInfos { get; init; }
-    public DbSet<Customer> Customers { get; init; }
-    public DbSet<Employee> Employees { get; init; }
-    public DbSet<EmployeeRole> EmployeeRoles { get; init; }
-    public DbSet<Invoice> Invoices { get; init; }
-    public DbSet<InvoicePosition> InvoicePositions { get; init; }
-    public DbSet<Role> Roles { get; init; }
-    public DbSet<Supplier> Suppliers { get; init; }
+        var builder = modelBuilder.Entity(entityType.ClrType);
+        builder.Property(created.Name).HasDefaultValueSql("now()");
+        builder.Property(lastModified.Name).HasDefaultValueSql("now()");
+    }   
 }

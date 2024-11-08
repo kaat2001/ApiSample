@@ -1,15 +1,17 @@
 ﻿using DataModel.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Storage;
+using System.Transactions;
 
-namespace DataModel
+namespace DataModel.DbContexts
 {
     public interface IDbContext
-    {
+    {      
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+
+        int SaveChanges();
+
         Guid NewId();
 
         DbSet<BankCorrespondent> BankCorrespondent { get; }
@@ -21,5 +23,6 @@ namespace DataModel
         DbSet<InvoicePosition> InvoicePositions { get; }
         DbSet<Role> Roles { get; }
         DbSet<Supplier> Suppliers { get; }
+
     }
 }

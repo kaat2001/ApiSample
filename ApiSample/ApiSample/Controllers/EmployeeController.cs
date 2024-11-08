@@ -1,11 +1,8 @@
 ﻿
-using ApiSample.Mutations;
 using ApiSample.Queries;
-using ApiSample.Results;
 using ApiSampleControllers.Extentions;
-using Common.Dto.Employee;
+using Common.Dto.Employees;
 using Common.Interfaces;
-using Common.Interfaces.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,7 +33,7 @@ public class EmployeeController: ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<List<EmployeeShortInfoDto>>> GetAll([FromQuery] EmployeeGetQuery query, CancellationToken cancellationToken)
     {
-        var result = await _userService.GetListsAsync(User.GetId(), cancellationToken);
+        var result = await _userService.GetLists(User.GetId(), cancellationToken);
 
         return Ok(result);
     }
@@ -44,40 +41,44 @@ public class EmployeeController: ControllerBase
     [HttpGet]
     [Produces(typeof(EmployeeInfoDto))]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<EmployeeInfoDto>> Get([FromQuery] Guid guid, CancellationToken cancellationToken)
+    public async Task<ActionResult<EmployeeInfoDto>> Get([FromQuery] Guid employeeId, CancellationToken cancellationToken)
     {
-        //var result = await _userService.GetByIdAsync(User.GetId(), cancellationToken);
+        var result = await _userService.GetById(User.GetId(), employeeId, cancellationToken);
+        if (result.IsSuccess)
+        return Ok(result.Value);
+        return StatusCode(StatusCodes.Status500InternalServerError, result.ErrorMessage);
 
-        return Ok();
     }
     [HttpPost]
-    [Produces(typeof(ModificationResult))]
+    [Produces(typeof(Guid))]
 
-    public async Task<ActionResult<ModificationResult>> Create(SaveUserMutation command, CancellationToken cancellationToken) 
+    public async Task<ActionResult<Guid>> Create(EmployeeInfoDto employeeData, CancellationToken cancellationToken) 
     {
-        var user = await _userService.CreateEmployee(User.GetId(), cancellationToken);
+        var result = await _userService.Create(User.GetId(), employeeData, cancellationToken);
 
-        return Ok(new ModificationResult());
+        if (result.IsSuccess)
+            return Ok(result.Value);
+        return StatusCode(StatusCodes.Status500InternalServerError, result.ErrorMessage);
     }
 
     [HttpPatch]
-    [Produces(typeof(ModificationResult))]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<ModificationResult>> Update(SaveUserMutation command, CancellationToken cancellationToken)
+    [Produces(typeof(Guid))]
+    public async Task<ActionResult<Guid>> Update(EmployeeInfoDto employeeData, CancellationToken cancellationToken)
     {
-        var user = await _userService.UpdateEmployee(User.GetId(), cancellationToken);
-        return Ok(new ModificationResult());
+        var result = await _userService.Update(User.GetId(), employeeData, cancellationToken);
+        if (result.IsSuccess)
+            return Ok(result.Value);
+        return StatusCode(StatusCodes.Status500InternalServerError, result.ErrorMessage);
     }
 
     [HttpDelete]
-    [Produces(typeof(ModificationResult))]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<ModificationResult>> Delete(SaveUserMutation command, CancellationToken cancellationToken)
+    [Produces(typeof(bool))]
+    public async Task<ActionResult<bool>> Delete(Guid employeeId, CancellationToken cancellationToken)
     {
-        var user = await _userService.DeleteEmployee(User.GetId(), cancellationToken);
-        return Ok(new ModificationResult());
+        var result = await _userService.Delete(User.GetId(), employeeId, cancellationToken);
+        if (result.IsSuccess)
+            return Ok(result.Value);
+        return StatusCode(StatusCodes.Status500InternalServerError, result.ErrorMessage);
     }
 
 }

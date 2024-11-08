@@ -51,7 +51,9 @@ namespace DataAccess.MsSql.Migrations
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("datetimeoffset");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<DateTimeOffset?>("Deleted")
                         .HasColumnType("datetimeoffset");
@@ -65,7 +67,9 @@ namespace DataAccess.MsSql.Migrations
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LastModified")
-                        .HasColumnType("datetimeoffset");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -89,7 +93,9 @@ namespace DataAccess.MsSql.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("datetimeoffset");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<DateTimeOffset?>("Deleted")
                         .HasColumnType("datetimeoffset");
@@ -98,7 +104,9 @@ namespace DataAccess.MsSql.Migrations
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LastModified")
-                        .HasColumnType("datetimeoffset");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -120,7 +128,9 @@ namespace DataAccess.MsSql.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("datetimeoffset");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<DateTimeOffset?>("Deleted")
                         .HasColumnType("datetimeoffset");
@@ -139,7 +149,9 @@ namespace DataAccess.MsSql.Migrations
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LastModified")
-                        .HasColumnType("datetimeoffset");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -188,7 +200,9 @@ namespace DataAccess.MsSql.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("datetimeoffset");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uniqueidentifier");
@@ -211,7 +225,9 @@ namespace DataAccess.MsSql.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<DateTimeOffset?>("LastModified")
-                        .HasColumnType("datetimeoffset");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<DateTimeOffset>("PeriodEndDate")
                         .HasColumnType("datetimeoffset");
@@ -238,7 +254,9 @@ namespace DataAccess.MsSql.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("datetimeoffset");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<DateTimeOffset?>("Deleted")
                         .HasColumnType("datetimeoffset");
@@ -255,7 +273,9 @@ namespace DataAccess.MsSql.Migrations
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LastModified")
-                        .HasColumnType("datetimeoffset");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<int?>("Order")
                         .HasColumnType("int");
@@ -318,7 +338,9 @@ namespace DataAccess.MsSql.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("datetimeoffset");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<DateTimeOffset?>("Deleted")
                         .HasColumnType("datetimeoffset");
@@ -327,7 +349,9 @@ namespace DataAccess.MsSql.Migrations
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LastModified")
-                        .HasColumnType("datetimeoffset");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<string>("Name")
                         .IsRequired()

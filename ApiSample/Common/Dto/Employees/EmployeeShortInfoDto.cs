@@ -1,4 +1,4 @@
-﻿namespace Common.Dto.Employee;
+﻿namespace Common.Dto.Employees;
 
 public class EmployeeShortInfoDto
 {

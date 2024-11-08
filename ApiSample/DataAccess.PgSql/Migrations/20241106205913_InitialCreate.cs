@@ -27,8 +27,8 @@ namespace DataAccess.PgSql.Migrations
                     Iban = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
                     Deleted = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
-                    Created = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
-                    LastModified = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true)
+                    Created = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
+                    LastModified = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, defaultValueSql: "now()")
                 },
                 constraints: table =>
                 {
@@ -44,8 +44,8 @@ namespace DataAccess.PgSql.Migrations
                     Name = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
                     Deleted = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
-                    Created = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
-                    LastModified = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true)
+                    Created = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
+                    LastModified = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, defaultValueSql: "now()")
                 },
                 constraints: table =>
                 {
@@ -67,8 +67,8 @@ namespace DataAccess.PgSql.Migrations
                     SecurityStamp = table.Column<Guid>(type: "uuid", nullable: false),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
                     Deleted = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
-                    Created = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
-                    LastModified = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true)
+                    Created = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
+                    LastModified = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, defaultValueSql: "now()")
                 },
                 constraints: table =>
                 {
@@ -102,8 +102,8 @@ namespace DataAccess.PgSql.Migrations
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
                     Deleted = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
                     BeneficiaryBankId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Created = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
-                    LastModified = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true)
+                    Created = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
+                    LastModified = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, defaultValueSql: "now()")
                 },
                 constraints: table =>
                 {
@@ -186,8 +186,8 @@ namespace DataAccess.PgSql.Migrations
                     SupplierId = table.Column<Guid>(type: "uuid", nullable: false),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
                     Deleted = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
-                    Created = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
-                    LastModified = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true)
+                    Created = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
+                    LastModified = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, defaultValueSql: "now()")
                 },
                 constraints: table =>
                 {
@@ -222,8 +222,8 @@ namespace DataAccess.PgSql.Migrations
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
                     Deleted = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
                     InvoiceId = table.Column<Guid>(type: "uuid", nullable: true),
-                    Created = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
-                    LastModified = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true)
+                    Created = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
+                    LastModified = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, defaultValueSql: "now()")
                 },
                 constraints: table =>
                 {

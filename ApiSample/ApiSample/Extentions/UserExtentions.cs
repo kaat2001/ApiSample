@@ -22,12 +22,12 @@ public static class UserExtensions
         return claimsPrincipal.HasClaim(ClaimTypeNames.Role, roleName);
     }
 
-    public static int GetId(this ClaimsPrincipal principal)
+    public static Guid GetId(this ClaimsPrincipal principal)
     {
-        if (int.TryParse(GetClaim(principal, ClaimTypes.NameIdentifier), out var id))
+        if (Guid.TryParse(GetClaim(principal, ClaimTypes.NameIdentifier), out var id))
             return id;
 
-        return 0;
+        return Guid.Empty;
     }
 
     public static string? GetClaim(this ClaimsPrincipal principal, string claimType)

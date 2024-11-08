@@ -52,7 +52,9 @@ namespace DataAccess.PgSql.Migrations
                         .HasColumnType("character varying(500)");
 
                     b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("now()");
 
                     b.Property<DateTimeOffset?>("Deleted")
                         .HasColumnType("timestamp with time zone");
@@ -66,7 +68,9 @@ namespace DataAccess.PgSql.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<DateTimeOffset?>("LastModified")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("now()");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -90,7 +94,9 @@ namespace DataAccess.PgSql.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("now()");
 
                     b.Property<DateTimeOffset?>("Deleted")
                         .HasColumnType("timestamp with time zone");
@@ -99,7 +105,9 @@ namespace DataAccess.PgSql.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<DateTimeOffset?>("LastModified")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("now()");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -121,7 +129,9 @@ namespace DataAccess.PgSql.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("now()");
 
                     b.Property<DateTimeOffset?>("Deleted")
                         .HasColumnType("timestamp with time zone");
@@ -140,7 +150,9 @@ namespace DataAccess.PgSql.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<DateTimeOffset?>("LastModified")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("now()");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -189,7 +201,9 @@ namespace DataAccess.PgSql.Migrations
                         .HasColumnType("character varying(50)");
 
                     b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("now()");
 
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uuid");
@@ -212,7 +226,9 @@ namespace DataAccess.PgSql.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTimeOffset?>("LastModified")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("now()");
 
                     b.Property<DateTimeOffset>("PeriodEndDate")
                         .HasColumnType("timestamp with time zone");
@@ -239,7 +255,9 @@ namespace DataAccess.PgSql.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("now()");
 
                     b.Property<DateTimeOffset?>("Deleted")
                         .HasColumnType("timestamp with time zone");
@@ -256,7 +274,9 @@ namespace DataAccess.PgSql.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<DateTimeOffset?>("LastModified")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("now()");
 
                     b.Property<int?>("Order")
                         .HasColumnType("integer");
@@ -319,7 +339,9 @@ namespace DataAccess.PgSql.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("now()");
 
                     b.Property<DateTimeOffset?>("Deleted")
                         .HasColumnType("timestamp with time zone");
@@ -328,7 +350,9 @@ namespace DataAccess.PgSql.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<DateTimeOffset?>("LastModified")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("now()");
 
                     b.Property<string>("Name")
                         .IsRequired()
