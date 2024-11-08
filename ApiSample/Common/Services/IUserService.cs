@@ -1,6 +1,6 @@
 ﻿using Common.Dto.Employees;
 
-namespace Common.Interfaces;
+namespace Common.Interfaces.Services;
 
 public interface IUserService
 {

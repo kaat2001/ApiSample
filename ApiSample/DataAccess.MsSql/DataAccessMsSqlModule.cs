@@ -1,5 +1,4 @@
-﻿using Common.Interfaces;
-using DataModel.DbContexts;
+﻿using DataModel.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

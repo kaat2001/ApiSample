@@ -3,17 +3,21 @@ using Common.Interfaces.Repositories;
 using DataModel.DbContexts;
 using DataModel.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using AutoMapper;
 
-namespace ApiSample.Repositories;
+namespace Common.Implementations.Repositories;
 
 public class EmployeeRepository : IEmployeeRepository
 {
     private readonly IDbContext _db;
+    private readonly IMapper _mapper;
     private readonly ILogger<EmployeeRepository> _logger;
 
-    public EmployeeRepository(IDbContext db, ILogger<EmployeeRepository> logger)
+    public EmployeeRepository(IDbContext db, IMapper mapper, ILogger<EmployeeRepository> logger)
     {
         _db = db;
+        _mapper = mapper;
         _logger = logger;
     }
 
@@ -90,16 +94,9 @@ public class EmployeeRepository : IEmployeeRepository
 
     public async Task<List<EmployeeShortInfoDto>> GetAll(object filter, CancellationToken cancellationToken = default)
     {
-        //TODO mapper
         //TODO select not deleted records by default, without specifing it
-        var items = await _db.Employees.Where(x => !x.IsDeleted).ToListAsync();
-        return items.Select(x => new EmployeeShortInfoDto
-        {
-            Id = x.Id,
-            BirthDate = x.BirthDate,
-            FirstName = x.FirstName,
-            LastName = x.LastName
-        }).ToList();
+        var items = await _db.Employees.Where(x => !x.IsDeleted).Select(item => _mapper.Map<EmployeeShortInfoDto>(item)).ToListAsync();
+        return items;
     }
 
     public async Task<EmployeeShortInfoDto?> Get(Guid employeeId, CancellationToken cancellationToken = default)
@@ -111,13 +108,7 @@ public class EmployeeRepository : IEmployeeRepository
             if (item == null)
                 throw new ArgumentOutOfRangeException($"Employee not found by Id={employeeId}");
 
-            result = new EmployeeShortInfoDto()
-            {
-                BirthDate = item.BirthDate,
-                FirstName = item.FirstName,
-                LastName = item.LastName,
-                Id = item.Id
-            };
+            result = _mapper.Map<EmployeeShortInfoDto>(item);
         }
         catch (Exception ex)
         {

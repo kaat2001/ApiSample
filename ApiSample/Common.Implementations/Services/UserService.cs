@@ -1,10 +1,9 @@
-﻿using Common;
-using Common.Dto.Employees;
-using Common.Interfaces;
+﻿using Common.Dto.Employees;
 using Common.Interfaces.Repositories;
-using DataModel.Entities;
+using Common.Interfaces.Services;
+using Microsoft.Extensions.Logging;
 
-namespace ApiSample.Interfaces;
+namespace Common.Implementation.Services;
 
 public class UserService : IUserService
 {
@@ -57,7 +56,7 @@ public class UserService : IUserService
     {
         var employee =  await _employeeRepository.Get(employeeId, cancellationToken);
         if (employee!=null)
-            return new BaseResponse<EmployeeShortInfoDto>(employee);
+            return new BaseResponse<EmployeeShortInfoDto?>(employee);
         else return new BaseResponse<EmployeeShortInfoDto?>(false, "Error occiured", null);
     }
 }

@@ -2,8 +2,6 @@
 
 using ApiSample.Constants;
 using ApiSample.Extentions;
-using ApiSample.Interfaces;
-using Common.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.IdentityModel.Tokens;
@@ -14,8 +12,10 @@ using DataAccess.MsSql;
 using DataAccess.PgSql;
 using Microsoft.OpenApi.Models;
 using Common.Interfaces.Repositories;
-using ApiSample.Repositories;
-using DataModel;
+using Common.Interfaces.Services;
+using Common.Implementations.Repositories;
+using Common.Implementation.Services;
+using Common.Implementations;
 
 Version? AppVersion = Assembly.GetEntryAssembly()?.GetName().Version;
 
@@ -157,5 +157,6 @@ static void ConfigureServices(WebApplicationBuilder builder)
     builder.Services.AddMemoryCache();
     builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
     builder.Services.AddScoped<IUserService, UserService>();
+    builder.Services.AddCommonImplementationsModule();
 }
 

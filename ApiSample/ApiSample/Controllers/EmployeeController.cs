@@ -2,7 +2,7 @@
 using ApiSample.Queries;
 using ApiSampleControllers.Extentions;
 using Common.Dto.Employees;
-using Common.Interfaces;
+using Common.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
