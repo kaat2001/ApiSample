@@ -13,6 +13,7 @@ public class InvoicePosition : AuditableEntity, IDeletable, IIdentity<Guid>
     
     public int? Order { get; set; }
 
+
     [MaxLength(LongLength)]
     public required string Description { get; set; }
 
@@ -28,4 +29,9 @@ public class InvoicePosition : AuditableEntity, IDeletable, IIdentity<Guid>
     public bool IsDeleted { get; set; }
 
     public DateTimeOffset? Deleted { get; set; }
+
+    public required Guid InvoiceId { get; set; }
+    
+    public required Invoice Invoice { get; set; }
+
 }

@@ -155,8 +155,6 @@ static void ConfigureServices(WebApplicationBuilder builder)
         builder.Services.AddDataAccessPgSqlModule(builder.Configuration);
 
     builder.Services.AddMemoryCache();
-    builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-    builder.Services.AddScoped<IUserService, UserService>();
     builder.Services.AddCommonImplementationsModule();
 }
 

@@ -87,7 +87,7 @@ public class EmployeeRepository : IEmployeeRepository
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error occuired during creating new employee");
+            _logger.LogError(ex, "Error occuired during updating new employee");
             return Guid.Empty;
         }
     }
@@ -112,7 +112,7 @@ public class EmployeeRepository : IEmployeeRepository
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error occuired during creating new employee");
+            _logger.LogError(ex, "Error occuired during getting specified employee");
         }
         return result;
     }
