@@ -149,12 +149,14 @@ static void ConfigureServices(WebApplicationBuilder builder)
     {
         options.Conventions.Add(new RouteTokenTransformerConvention(new SlugifyParameterTransformer()));
     });
+
+    builder.Services.AddCommonImplementationsModule();
+
     if (builder.Configuration.IsMsSql())
         builder.Services.AddDataAccessMsSqlModule(builder.Configuration);
     else
         builder.Services.AddDataAccessPgSqlModule(builder.Configuration);
 
     builder.Services.AddMemoryCache();
-    builder.Services.AddCommonImplementationsModule();
 }
 

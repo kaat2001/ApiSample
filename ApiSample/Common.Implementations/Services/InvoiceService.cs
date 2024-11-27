@@ -1,18 +1,16 @@
-﻿using Common.Dto.Employees;
-using Common.Interfaces.Dto.Invoices;
+﻿using Common.Interfaces.Dto.Invoices;
 using Common.Interfaces.Repositories;
 using Common.Interfaces.Services;
-using DataModel.Entities;
 using Microsoft.Extensions.Logging;
 
 namespace Common.Implementation.Services;
 
 public class InvoiceService : IInvoiceService
 {
-    private readonly InvoiceRepository _invoiceRepository;
+    private readonly IInvoiceRepository _invoiceRepository;
     private readonly ILogger<InvoiceService> _logger;
 
-    public InvoiceService(InvoiceRepository invoiceRepository,
+    public InvoiceService(IInvoiceRepository invoiceRepository,
          ILogger<InvoiceService> logger)
     {
         _invoiceRepository = invoiceRepository;

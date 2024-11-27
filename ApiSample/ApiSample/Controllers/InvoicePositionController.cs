@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ApiSample.Controllers;
 
 //[Authorize]
-[Route("api/v1/employee/[action]")]
+[Route("api/v1/invoice-position/[action]")]
 [ApiController]
 
 public class InvoicePositionController : ControllerBase

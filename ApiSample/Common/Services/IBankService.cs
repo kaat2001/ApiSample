@@ -1,4 +1,6 @@
-﻿namespace Common.Interfaces.Services;
+﻿using Common.Dto.Employees;
+
+namespace Common.Interfaces.Services;
 
 public interface IBankService
 {

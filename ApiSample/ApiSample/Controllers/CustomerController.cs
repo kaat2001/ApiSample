@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ApiSample.Controllers;
 
 //[Authorize]
-[Route("api/v1/employee/[action]")]
+[Route("api/v1/customer/[action]")]
 [ApiController]
 
 public class CustomerController : ControllerBase
