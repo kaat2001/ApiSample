@@ -7,3 +7,4 @@
 /ApiSample/ApiSample/appsettings.Development.json
 /ApiSample/*/obj
 /ApiSample/*/bin
+/react-sample/package-lock.json
