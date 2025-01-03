@@ -16,9 +16,11 @@ public static class CommonImplementationsModule
 
         services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+        services.AddScoped<ICustomerRepository, CustomerRepository>();
 
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IInvoiceService, InvoiceService>();
+        services.AddScoped<ICustomerService, CustomerService>();
 
         return services;
     }

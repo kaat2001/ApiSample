@@ -11,11 +11,8 @@ using System.Text;
 using DataAccess.MsSql;
 using DataAccess.PgSql;
 using Microsoft.OpenApi.Models;
-using Common.Interfaces.Repositories;
-using Common.Interfaces.Services;
-using Common.Implementations.Repositories;
-using Common.Implementation.Services;
 using Common.Implementations;
+using Microsoft.EntityFrameworkCore;
 
 Version? AppVersion = Assembly.GetEntryAssembly()?.GetName().Version;
 
@@ -32,6 +29,10 @@ ConfigureServices(builder);
 ConfigureSeriLog(AppVersion, builder);
 
 var app = builder.Build();
+
+using var scope = app.Services.CreateScope();
+var appDbContext = scope.ServiceProvider.GetRequiredService<DbContext>();
+appDbContext.Database.EnsureCreated();
 
 app.UseSerilogRequestLogging();
 

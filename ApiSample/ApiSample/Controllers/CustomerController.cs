@@ -21,10 +21,12 @@ public class CustomerController : ControllerBase
     private readonly IAuthorizationService _authorizationService;
 
     public CustomerController(ILogger<CustomerController> logger,
-                                   IAuthorizationService authorizationService
+                              ICustomerService customerService,
+                              IAuthorizationService authorizationService
                                    )
     {
         _logger = logger;
+        _customerService = customerService; 
         _authorizationService = authorizationService;
     }
 

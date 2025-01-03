@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess.PgSql", "DataAcc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Implementations", "Common.Implementations\Common.Implementations.csproj", "{0998C489-683B-4065-809A-A8955DDE4D9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleData", "SampleData\SampleData.csproj", "{07FD4996-3235-4E9B-B78D-E66EC78475C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{0998C489-683B-4065-809A-A8955DDE4D9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0998C489-683B-4065-809A-A8955DDE4D9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0998C489-683B-4065-809A-A8955DDE4D9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07FD4996-3235-4E9B-B78D-E66EC78475C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07FD4996-3235-4E9B-B78D-E66EC78475C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07FD4996-3235-4E9B-B78D-E66EC78475C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07FD4996-3235-4E9B-B78D-E66EC78475C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

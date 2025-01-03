@@ -12,11 +12,18 @@ public static class DataAccessMsSqlModule
        IConfigurationManager configuration)
     {
         services.AddScoped<IDbContext, MsSqlDbContext>();
+        services.AddScoped<DbContext, MsSqlDbContext>();
 
         services.AddDbContextFactory<MsSqlDbContext>(
-            options => options.UseSqlServer(
+            options => options
+            .UseSqlServer(
                 configuration.GetConnectionString("MsSqlConnection"),
-                builder => builder.MigrationsAssembly(typeof(MsSqlDbContext).Assembly.FullName)));
+                builder => builder.MigrationsAssembly(typeof(MsSqlDbContext).Assembly.FullName))
+            .UseSeeding((context, _) =>
+            {
+                SampleData.Sample.SeedData(context);
+            }));
+
 
         return services;
     }
