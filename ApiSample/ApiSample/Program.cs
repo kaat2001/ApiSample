@@ -42,11 +42,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.UseDeveloperExceptionPage();
 }
-
 app.UseRouting();
-app.UseCors();
 
 app.UseAuthentication();
+
+app.UseCors(builder =>
+  builder.WithOrigins("http://localhost:3000", "https://localhost:3000")
+         .AllowAnyHeader()
+         .AllowAnyMethod()
+         .AllowCredentials()); 
+
+
 app.UseAuthorization();
 
 app.MapControllers();

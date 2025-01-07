@@ -3,7 +3,6 @@ using ApiSample.Queries;
 using ApiSampleControllers.Extentions;
 using Common.Dto.Employees;
 using Common.Interfaces.Dto;
-using Common.Interfaces.Dto.Invoices;
 using Common.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -33,7 +32,7 @@ public class CustomerController : ControllerBase
     [HttpGet]
     [Produces(typeof(List<CustomerDto>))]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<List<InvoiceDto>>> GetAll([FromQuery] BaseGetQuery query, CancellationToken cancellationToken)
+    public async Task<ActionResult<List<CustomerDto>>> GetAll([FromQuery] BaseGetQuery query, CancellationToken cancellationToken)
     {
         var result = await _customerService.GetLists(User.GetId(), cancellationToken);
 
